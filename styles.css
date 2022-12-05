@@ -7,7 +7,7 @@
 }
 
 h1 {
-    margin: 10% 0 10% 0;
+    margin: 7% 0 7% 0;
     color: aliceblue;
 }
 
@@ -16,7 +16,7 @@ body {
 }
 
 .box, form {
-    gap: 3vh;
+    gap: 6vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
