@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,14 +26,15 @@ public class UsuarioController{
 	private IUsuario dao;
 	
 	@GetMapping
-	public List<Usuario> listaUsuarios() {
-		return (List<Usuario>) dao.findAll();
+	public ResponseEntity<List<Usuario>> listaUsuarios() {
+		List<Usuario> lista = (List<Usuario>) dao.findAll();
+		return ResponseEntity.status(200).body(lista);
 	}
 	
 	@PostMapping
-	public Usuario criarUsuario(@RequestBody Usuario usuario) {
+	public ResponseEntity<Usuario> criarUsuario(@RequestBody Usuario usuario) {
 		Usuario usuarioNovo = dao.save(usuario);
-		return usuarioNovo;
+		return ResponseEntity.status(201).body(usuarioNovo);
 	}
 	
 	@PutMapping
@@ -42,10 +44,9 @@ public class UsuarioController{
 	}
 	
 	@DeleteMapping("/{id}")
-	public Optional<Usuario> deletarUsuario(@PathVariable Integer id) {
-		Optional<Usuario> usuario = dao.findById(id);
+	public ResponseEntity<?> deletarUsuario(@PathVariable Integer id) { // <?> indica que eu não sei que tipo de dado vou receber, portando uso um genérico
 		dao.deleteById(id);
-		return usuario;
+		return ResponseEntity.status(204).build(); //build indica que ele não tem corpo
 	}
 
 }
