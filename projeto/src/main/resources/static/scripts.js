@@ -16,8 +16,8 @@ function cadastrar() {
         method: 'POST',
         body: JSON.stringify({
             nome: user_nome.value,
-            email: user_email.value,
             username: user_username.value,
+            email: user_email.value,
             senha: user_senha.value,
             telefone: user_telefone.value
         })
@@ -29,8 +29,8 @@ function cadastrar() {
 function limpar(){
     user_nome.value = ''
     user_email.value = ''
-    user_senha.value = ''
     user_username.value = ''
+    user_senha.value = ''
     user_telefone.value = ''
 }
 
