@@ -60,6 +60,7 @@ public class UsuarioController{
 		if(!isValid){
 			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
 		}
+		System.out.println("Você foi logado!!");
 		return ResponseEntity.status(200).build();
 	}
 
